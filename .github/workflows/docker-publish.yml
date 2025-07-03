@@ -43,6 +43,8 @@ jobs:
         tags: test-image:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
+        build-args: |
+          CACHE_BUST=${{ github.run_number }}
 
     - name: Pull official image for comparison
       run: |
@@ -103,6 +105,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
+        build-args: |
+          CACHE_BUST=${{ github.run_number }}
 
     - name: Output image details
       run: |

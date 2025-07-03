@@ -56,6 +56,7 @@ RUN curl -s https://api.github.com/repos/canonical/pebble/releases/latest | \
     rm pebble.tar.gz
 
 # Clone and install custom watcher source code
+ARG CACHE_BUST=1
 RUN git clone --branch review/ho_minh_quang_ngo/enhance-host-maintenance-strategy --single-branch https://github.com/H-M-Quang-Ngo/watcher.git /tmp/watcher-source && \
     pip3 install --break-system-packages /tmp/watcher-source && \
     rm -rf /tmp/watcher-source
